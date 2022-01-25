@@ -16,4 +16,9 @@ Nmap
 6. (-A) OS and Version detection
 7. (-oN) out to a file
 7.b Filename:
-8
+
+
+Nikto
+1. Enter IP or FQDN to scan:
+2. (-h) Standard scan
+3. (-ssl)
