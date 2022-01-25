@@ -6,6 +6,7 @@ Menu:
 4. Encryption
 5. MD5 Hash Checker
 
+What is my IP?
 
 Nmap
 1. What is my IP?
@@ -14,9 +15,10 @@ Nmap
 4. (-sp) Ping scan
 5. (--top-ports 20) Top 20 ports
 6. (-A) OS and Version detection
-7. (-oN) out to a file
-7.b Filename:
+7. (-oN) (-oG) out to a file
+7.b Filename
 
+nikto scan hosts that are up: cat nullbyte.txt | awk '/Up$/{print $2}' | cat >> targetIP.txt
 
 Nikto
 1. Enter IP or FQDN to scan:
