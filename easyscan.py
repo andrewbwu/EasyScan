@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 import sys
-import haslib
+import hashlib
 import nmap
+import socket
 
 def mainmenu():
   print("""
         Main Menu
 
-    1. What is my IP?
+    1. What is my Local IPv4 Address?
     2. Nmap (network scanning)
     3. Nikto (vulnerability scanning)
     4. Log stats
@@ -15,38 +16,63 @@ def mainmenu():
     6. Hash checker
 
               """)
-  menuchoice = input("Pick a tool:")
+  menuchoice = input("Pick a tool: ")
   for tool in menuchoice:
-    if int(tool) == 1:
-      print("IP SCAN BZZZT")
-    elif int(tool) == 2:
+    if tool == "1":
+      s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+      s.connect(('8.8.8.8', 1))  # connect() for UDP doesn't send packets
+      local_ip_address = s.getsockname()[0]
+      print()
+      print("Your local IP address is:" + local_ip_address)
+      mainmenu()
+    elif tool == "2":
       nmapmenu()
-    elif int(tool) == 3:
+    elif tool == "3":
       niktomenu()
-    elif int(tool) == 4:
+    elif tool == "4":
       logstatsmenu()
-    elif int(tool) == 5:
+    elif tool == "5":
       encodingmenu()
-    elif int(tool) == 6:
+    elif tool == "6":
       hashcheckermenu()
     else:
       print("Try again")
       mainmenu()
-  return
-
+  
 def nmapmenu():
   print("""
         Nmap
 
-    1. Enter IP or IP range to scan:
-    2. Enter port or port range to scan:
-    3. (-sp) Ping scan
-    4. (--top-ports 20) Top 20 ports
-    5. (-A) OS and version detection
-    6. (-oG) out to a file
-    7. Return to Main Menu
+    1. Enter IP or IP range to scan
+    2. Enter port or port range to scan (-p)
+    3. Enter a filename to output to (-oG)
+    4. Ping scan to discover hosts (-sn)
+    5. Scan top 20 ports (--top-ports 20)
+    6. Scan with service and version detection (-sV) 
+    7. Operating system discovery (-O)
+    8. Return to Main Menu
               """)
-
+  nmapmenuchoice = input("Pick an option: ")
+  print()
+  for nmapoption in nmapmenuchoice:
+    if nmapoption == "1":
+      iprange = input("Enter IP scan (ex: 1.1.1.1, 1.2.3.4-5.6.7.8, 1.2.3.0/24): ")
+      nmapmenu()
+    elif nmapoption == "2":
+      portrange = input("Enter port or port range to scan: ")
+      nmapmenu()
+    elif nmapoption == "3":
+      fileoutput = input("Enter a filename for output (to cancel, leave blank): ")
+      nmapmenu()
+    # elif nmapoption == "4":
+    # elif nmapoption == "5":
+    # elif nmapoption == "6":
+    # elif nmapoption == "7":
+    elif nmapoption == "8":
+      mainmenu()
+    else:
+      print("Try again")
+      nmapmenu()
 
 def main():
   print("""
