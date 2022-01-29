@@ -1,1 +1,25 @@
-Testing 1,2,3
+//This program will help introduce the grep and cut commands to find certain IPs.
+
+If the question asks for top 10 IPs
+	input command here cut -d ';' -f 3,5 filename.txt | sort | uniq -c | sort -n | head
+		print “Top 10 IPs: ”
+
+If the question asks for top 10 source IPs:
+		input command here cut -d ';' -f 3 file-name.txt | head
+			print  “Top 10 source IPs: ”
+
+If the question asks for top 10 destination IPs:
+input command here cut -d ';' -f 5 filename.txt | sort | uniq -c | sort -n | head
+print “Top 10 Destination IPs: ”
+
+If the question asks for top 10 ports:
+input command here cut -d ';' -f 4,6 filename.txt | sort | uniq -c | sort -n | head
+print “Top 10 Ports: ”
+
+
+
+Pseudo Code for Encoding:
+//This program will help introduce a way to encode and decode hex, base64 and binary codes.
+
+
+
