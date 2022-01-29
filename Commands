@@ -9,12 +9,12 @@ If the question asks for top 10 source IPs:
 			print  “Top 10 source IPs: ”
 
 If the question asks for top 10 destination IPs:
-input command here cut -d ';' -f 5 filename.txt | sort | uniq -c | sort -n | head
-print “Top 10 Destination IPs: ”
+	input command here cut -d ';' -f 5 filename.txt | sort | uniq -c | sort -n | head
+		print “Top 10 Destination IPs: ”
 
 If the question asks for top 10 ports:
-input command here cut -d ';' -f 4,6 filename.txt | sort | uniq -c | sort -n | head
-print “Top 10 Ports: ”
+	input command here cut -d ';' -f 4,6 filename.txt | sort | uniq -c | sort -n | head
+		print “Top 10 Ports: ”
 
 
 
