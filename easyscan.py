@@ -199,8 +199,11 @@ def nikto_menu():
 def nikto(host, niktoargs):
     return subprocess.check_output(['nikto', '-h', host, niktoargs])
 
+# def log_stats_menu():
 
+# def encoding_menu():
 
+# def hash_checker_menu():
 
 def main():
   print("""
