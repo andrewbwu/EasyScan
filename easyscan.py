@@ -20,7 +20,6 @@ def main_menu():
   menu_choice = input("Pick a tool: ")
   for tool in menu_choice:
     if tool == "1":
-      ni.ifaddresses('eth0')
       local_ip_address = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
       print()
       print('------------------------------------------------------------')
@@ -45,7 +44,7 @@ def nmap_menu():
   print("""
         Nmap
 
-    1. -sn (Find hosts on your network. No Ports. Use CIDR notation)
+    1. -sn (Find hosts on the network. Use CIDR notation)
     2. standard scan (all ports)
     3. --top-ports 20
     4. -sV (Service/Version Detection)
@@ -62,17 +61,17 @@ def nmap_menu():
     if nmap_option == "1":
       ip_range = input('Enter IP to scan: ')
       nmapscan.scan(ip_range, arguments='-sn -n')
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print('State : %s' % nmapscan[ip_range].state())
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       nmap_menu()
 
     elif nmap_option == "2":
       ip_range = input("Enter IP to scan: ")
       nmapscan.scan(ip_range, arguments='-n')
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print()
@@ -82,13 +81,13 @@ def nmap_menu():
               for port in lport:
                   print ('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
-      print('------------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       nmap_menu()
 
     elif nmap_option == "3":
       ip_range = input("Enter IP to scan: ")
       nmapscan.scan(ip_range, arguments='--top-ports 20')
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print()
@@ -98,13 +97,13 @@ def nmap_menu():
               for port in lport:
                   print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       nmap_menu()
 
     elif nmap_option == "4":
       ip_range = input("Enter IP to scan: ")
       nmapscan.scan(ip_range, arguments='-sV -n')
-      print('------------------------------------------------------------')
+      print('--------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print()
@@ -117,13 +116,13 @@ def nmap_menu():
                   print('Version : %s' % (nmapscan[ip_range][proto][port]['version']))
                   print()
           print()
-      print('------------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       nmap_menu()
 
     elif nmap_option == "5":
       ip_range = input("Enter IP to scan: ")
       nmapscan.scan(ip_range, arguments='-O')
-      print('------------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print()
@@ -143,13 +142,13 @@ def nmap_menu():
 #                      print('OsClass.accuracy : {0}'.format(osclass['accuracy']))
 #                      print()
           print()
-      print('-----------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       nmap_menu()
     elif nmap_option == "6":
       ip_range = input("Enter IP to scan: ")
       port_range = input("Enter ports to scan: ")
       nmapscan.scan(ip_range, port_range, '-n')
-      print('-----------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print()
@@ -159,7 +158,7 @@ def nmap_menu():
               for port in lport:
                 print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
-      print('-----------------------------------------------------------')
+      print('---------------------------------------------------------------------------')
       nmap_menu()  
 
     elif nmap_option == "7":
@@ -199,11 +198,35 @@ def nikto_menu():
 def nikto(host, niktoargs):
     return subprocess.check_output(['nikto', '-h', host, niktoargs])
 
-# def log_stats_menu():
+def log_stats_menu():
+    print("""
+        Log Statistics
+    1. Top 10 IPs
+    2. Top 10 Source IPs
+    3. Top 10 Destination IPs
+    4. Top 10 Ports
 
-# def encoding_menu():
+    5. Main Menu
+              """)
 
-# def hash_checker_menu():
+def encoding_menu():
+    print("""
+        Encoding
+    1. Hex
+    2. Base64
+    3. Binary
+    
+    4. Main Menu
+              """)
+
+def hash_checker_menu():
+    print("""
+        Hash Checker
+    1. MD5
+    2. SHA-256
+
+    3. Main Menu
+              """)
 
 def main():
   print("""
