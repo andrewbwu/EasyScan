@@ -5,7 +5,6 @@ import nmap
 import socket
 import netifaces as ni
 import subprocess
-import re
 
 def main_menu():
   print("""
@@ -21,9 +20,6 @@ def main_menu():
   menu_choice = input("Pick a tool: ")
   for tool in menu_choice:
     if tool == "1":
-#      s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#      s.connect(('8.8.8.8', 1))  # connect() or UDP doesn't send packets
-#      local_ip_address = s.getsockname()[0]
       ni.ifaddresses('eth0')
       local_ip_address = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
       print()
@@ -49,7 +45,7 @@ def nmap_menu():
   print("""
         Nmap
 
-    1. -sn -n (Find hosts on your network. No Ports. Use CIDR notation)
+    1. -sn (Find hosts on your network. No Ports. Use CIDR notation)
     2. standard scan (all ports)
     3. --top-ports 20
     4. -sV (Service/Version Detection)
@@ -107,7 +103,7 @@ def nmap_menu():
 
     elif nmap_option == "4":
       ip_range = input("Enter IP to scan: ")
-      nmapscan.scan(ip_range, '135, 3000', arguments='-sV -n')
+      nmapscan.scan(ip_range, arguments='-sV -n')
       print('------------------------------------------------------------')
       for ip_range in nmapscan.all_hosts():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
