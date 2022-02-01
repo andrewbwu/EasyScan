@@ -2,7 +2,7 @@
 import sys
 import hashlib
 import nmap
-import socket
+#import socket
 import netifaces as ni
 import subprocess
 
@@ -10,7 +10,7 @@ def main_menu():
   print("""
         Main Menu
 
-    1. What is my Local IPv4 Address?
+    1. What is my Local IP Address?
     2. Nmap (network scanning)
     3. Nikto (vulnerability scanning)
     4. Log stats
@@ -48,7 +48,7 @@ def nmap_menu():
     2. standard scan (all ports)
     3. --top-ports 20
     4. -sV (Service/Version Detection)
-    5. -O (Enable OS Detection)
+    5. -O (Enable OS Detection) (Requires root!)
     6. -p (Port Scan)
     7. Return to Main Menu
               """)
@@ -144,6 +144,7 @@ def nmap_menu():
           print()
       print('---------------------------------------------------------------------------')
       nmap_menu()
+
     elif nmap_option == "6":
       ip_range = input("Enter IP to scan: ")
       port_range = input("Enter ports to scan: ")
@@ -230,7 +231,13 @@ def hash_checker_menu():
 
 def main():
   print("""
-        EasyScan v0.1           """)
+              _____                ____                  
+             | ____|__ _ ___ _   _/ ___|  ___ __ _ _ __  
+             |  _| / _` / __| | | \___ \ / __/ _` | '_ \ 
+             | |__| (_| \__ \ |_| |___) | (_| (_| | | | |
+             |_____\__,_|___/\__, |____/ \___\__,_|_| |_|
+                             |___/                              v0.1
+        """)
   main_menu()
 
 if __name__ == "__main__":
