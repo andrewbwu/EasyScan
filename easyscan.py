@@ -5,6 +5,8 @@ import nmap
 #import socket
 import netifaces as ni
 import subprocess
+import pyfiglet
+import string
 
 def main_menu():
   print("""
@@ -36,6 +38,12 @@ def main_menu():
       encoding_menu()
     elif tool == "6":
       hash_checker_menu()
+    elif tool == "7":
+      authors()
+    elif tool == "8":
+      ascii2banner()
+    elif tool == "9":
+      angry_translator()
     else:
       print("Try again")
       main_menu()
@@ -229,8 +237,48 @@ def hash_checker_menu():
     3. Main Menu
               """)
 
+def authors():
+    print("""
+        Brought to you by
+
+             ____   __  __      ___        _  __        __
+            | __ ) |  \/  |    ( _ )      / \ \ \      / /
+            |  _ \ | |\/| |    / _ \/\   / _ \ \ \ /\ / / 
+            | |_) || |  | |_  | (_>  <  / ___ \ \ V  V /_ 
+            |____(_)_|  |_(_)  \___/\/ /_/   \_(_)_/\_/(_)
+
+                """)
+    main_menu()
+
+def ascii2banner():
+    print()
+    text_to_ascii = input("Enter text to turn into ascii banner: ")
+    ascii_banner = pyfiglet.figlet_format(text_to_ascii)
+    print()
+    print(ascii_banner)
+    main_menu()
+
+def angry_translator():
+    print()
+    text = input("Enter text to translate into aNgRy InTeRnEt TeXt!: ")
+#    text_lowercase = text.ascii_lowercase
+    angry_text = ""
+    i = True
+    for char in text:
+        if i:
+            angry_text += char.lower()
+        else:
+            angry_text += char.upper()
+        if char !=' ':
+            i = not i
+    print()
+    print('---------------------------------------------------------------------------')
+    print(angry_text)
+    print('---------------------------------------------------------------------------')
+    main_menu()
+
 def main():
-  print("""
+    print("""
               _____                ____                  
              | ____|__ _ ___ _   _/ ___|  ___ __ _ _ __  
              |  _| / _` / __| | | \___ \ / __/ _` | '_ \ 
@@ -238,7 +286,7 @@ def main():
              |_____\__,_|___/\__, |____/ \___\__,_|_| |_|
                              |___/                              v0.1
         """)
-  main_menu()
+    main_menu()
 
 if __name__ == "__main__":
   main()
