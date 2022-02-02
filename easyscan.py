@@ -221,12 +221,68 @@ def log_stats_menu():
 def encoding_menu():
     print("""
         Encoding
-    1. Hex
-    2. Base64
-    3. Binary
-    
-    4. Main Menu
+    1. Hex2ascii
+    2. ascii2hex
+    3. Base642ascii
+    4. ascii2base64
+    5. Binary2ascii
+    6. ascii2binary 
+    7. Main Menu
               """)
+    menu_choice = input('Choose An Option: ')
+    print()
+
+    for x in menu_choice:
+     if x == '1':
+        hexstring = input("Enter your code: ")
+        a_string = bytes.fromhex(hexstring)
+        a_string = a_string.decode("ascii")
+        print(a_string)
+        encoding_menu()
+
+     elif x == '2':
+       x = input("Enter your code: ")
+       output = x.encode('utf-8').hex()
+       print(output)
+       encoding_menu()
+
+     elif x == '3': #base642ascii
+       base64_message = input('Enter your code: ')
+       base64_bytes = base64_message.encode('ascii')
+       message_bytes = base64.b64decode(base64_bytes)
+       message = message_bytes.decode('ascii')
+       print(message)
+       encoding_menu()
+
+     elif x == '4':
+       message = input("Enter your code: ")
+       message_bytes = message.encode('ascii')
+       base64_bytes = base64.b64encode(message_bytes)
+       base64_message = base64_bytes.decode('ascii')
+       print(base64_message)
+       encoding_menu()
+
+     elif x == '5': #binary2ascii
+       binmess = input('Enter your code: ')
+       binary = binascii.a2b_uu(binmess)
+       print(binary)
+       encoding_menu()
+
+     elif x == '6': #ascii2binary
+       byte_array = input('Enter your code: ').encode()
+       binary_int = int.from_bytes(byte_array, 'big')
+       binary_string = bin(binary_int)
+       print(binary_string)
+       encoding_menu()
+
+     elif x == '7': #return2main
+       main_menu()
+
+     else:
+       print('Try Again')
+       encoding_menu()
+
+
 
 def hash_checker_menu():
     print("""
@@ -236,6 +292,7 @@ def hash_checker_menu():
 
     3. Main Menu
               """)
+
 
 def authors():
     print("""
