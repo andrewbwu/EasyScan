@@ -289,9 +289,28 @@ def hash_checker_menu():
         Hash Checker
     1. MD5
     2. SHA-256
-
     3. Main Menu
               """)
+
+    menu_option = input('Choose An Option: ')
+    print()
+
+    for x in menu_option:
+      if x == '1':
+       md_c = input('Enter text to generate md5 hash: ')
+       print(hashlib.md5(md_c.encode('utf-8')).hexdigest())
+       hash_checker_menu()
+
+      elif x == '2':
+       sha_txt = input('Enter text to generate hash: ')
+       result = hashlib.sha256(sha_txt.encode())
+       print(result.hexdigest())
+       hash_checker_menu()
+
+      else:
+       print('Try Again')
+       hash_checker_menu()
+
 
 
 def authors():
