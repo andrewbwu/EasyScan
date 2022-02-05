@@ -401,7 +401,10 @@ def hash_checker_menu():
     for x in menu_option:
       if x == '1':
        md_c = input('Enter text to generate md5 hash: ')
+       print('---------------------------------------------------------------------------')
        print(hashlib.md5(md_c.encode('utf-8')).hexdigest())
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        hash_checker_menu()
 
       elif x == '2':
@@ -417,7 +420,10 @@ def hash_checker_menu():
       elif x == '3':
        sha_txt = input('Enter text to generate hash: ')
        result = hashlib.sha256(sha_txt.encode())
+       print('---------------------------------------------------------------------------')
        print(result.hexdigest())
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        hash_checker_menu()
 
       elif x == '4':
