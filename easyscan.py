@@ -6,7 +6,6 @@ import subprocess
 import pyfiglet
 import time
 import base64
-#import binascii
 
 def main_menu():
   print("""
