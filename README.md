@@ -53,6 +53,9 @@ Thanks for making it to the end! Check out these tools in the not so Easter Egg 
     * 8.1 Make an ascii banner
     * 8.2 aNgRy InTeRnEt TrAnSlAtOr
 
+
+## About 
 Created by [Andrew Wu](https://github.com/andrewbwu) and [Berenice Nava-Morales](https://github.com/ynreb) 
 
-Shoutout to the staff at FullStack Academy and our instructors for their knowledge and guidance in our cybersecurity journey!
+## Shoutouts
+Special thanks to the staff at FullStack Academy and our instructors for their knowledge and guidance in our cybersecurity journey!
