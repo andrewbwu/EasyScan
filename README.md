@@ -55,4 +55,4 @@ Thanks for making it to the end! Check out these tools in the not so Easter Egg 
 
 Created by [Andrew Wu](https://github.com/andrewbwu) and [Berenice Nava-Morales](https://github.com/ynreb) 
 
-Shoutout to the staff at FullStack Academy and our instructors for
+Shoutout to the staff at FullStack Academy and our instructors for their knowledge and guidance in our Cybersecurity journey!
