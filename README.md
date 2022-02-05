@@ -19,7 +19,7 @@ sudo pip3 install python-nmap
 - To enable Operating System detection in nmap, run the script as root.
 
 
-Main Menu
+## Main Menu
 1. What is my Local IP Address?
 2. Nmap (Network Scanning)
     * 2.1 Find hosts on the network (-sn -n)
