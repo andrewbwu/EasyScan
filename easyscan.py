@@ -6,6 +6,7 @@ import subprocess
 import pyfiglet
 import time
 import base64
+import re
 
 def main_menu():
   print("""
@@ -52,10 +53,10 @@ def nmap_menu():
         Nmap
 
     1. Find hosts on the network. Use a range or CIDR notation
-    2. Scan for all open ports (standard scan)
+    2. Scan for all open ports (Standard scan)
     3. Scan the top 20 ports
     4. Probe open ports for services and version info
-    5. Attempt to detect the OS (requires root!)
+    5. Attempt to detect the OS (Requires root!)
     6. Scan specific ports
     7. Return to Main Menu
               """)
@@ -225,19 +226,57 @@ def log_stats_menu():
     print()
 
     for x in menu_choice:
-        if x == '1':
+        if x == '2':	      
+           filename = input("Enter filename: ")                            #take the filename
+           print()
+           print("Here is the first line of your log")
+           print()
+           with open(filename, "r") as f:                                  #open file
+               print(f.readline())                                         #print first line
+
+               deli = input("Enter delimiter: ")                           #enter the delimiter
+               fld = int(input("Enter field [0][1][2][3][4][5][etc]: "))    #enter the field position
+               print()
+
+               f.seek(0)                                                   #go back to start of file
+               log = f.readlines()                                         #make each line into a list
+               strippedfield = []                                          #create list for the stripped field
+               for entry in log:
+                   strippedfield.append(entry.split(deli)[fld])             #use split method to grab field and append to list
+
+               counter = {}                                                #create counter dictionary
+               for entry in strippedfield:
+                   if entry in counter:
+                       counter[entry] += 1
+                   else:
+                       counter[entry] = 1
+
+               print()
+               print('---------------------------------------------------------------------------')
+               for key in sorted(counter, key=counter.get, reverse=True)[:10]:
+                   print(key, '-', counter[key])
+               print('---------------------------------------------------------------------------')
+               time.sleep(2)
+               log_stats_menu()
+
+        elif x == '1':
+            filename = input("Enter filename: ")                                      #enter filename
+            with open(filename, "r") as f:
+             iplist = re.findall('(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', f.read())  #strip IPs out
+
+             counter = {}                                                           #create counter dictionary
+
+            for ip in iplist:
+              if ip in counter:
+               counter[ip] += 1
+              else:
+               counter[ip] = 1
+
 
             print()
             print('---------------------------------------------------------------------------')
-
-            print('---------------------------------------------------------------------------')
-            time.sleep(2)
-            log_stats_menu()
-
-        elif x == '2':
-            
-            print()
-            print('---------------------------------------------------------------------------')
+            for key in sorted(counter, key=counter.get, reverse=True)[:10]:        #print top 10 results
+             print(key, '-', counter[key])
 
             print('---------------------------------------------------------------------------')
             time.sleep(2)
