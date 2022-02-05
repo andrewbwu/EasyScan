@@ -12,11 +12,11 @@ def main_menu():
         Main Menu
 
     1. What is my Local IP Address?
-    2. Nmap (network scanning)
-    3. Nikto (vulnerability scanning)
-    4. Log stats
-    5. Encoding
-    6. Hash checker
+    2. Nmap (Network Scanning)
+    3. Nikto (Vulnerability Scanning)
+    4. Log Stats
+    5. Encoding and Decoding
+    6. Hash Checker
     7. (About)
               """)
   menu_choice = input("Pick a tool: ")
@@ -51,12 +51,12 @@ def nmap_menu():
   print("""
         Nmap
 
-    1. -sn (Find hosts on the network. Use CIDR notation)
-    2. standard scan (all ports)
-    3. --top-ports 20
-    4. -sV (Service/Version Detection)
-    5. -O (Enable OS Detection) (Requires root!)
-    6. -p (Port Scan)
+    1. Find hosts on the network. Use a range or CIDR notation
+    2. Scan for all open ports (Standard scan)
+    3. Scan the top 20 ports
+    4. Probe open ports for services and version info
+    5. Attempt to detect the OS (Requires root!)
+    6. Scan specific ports
     7. Return to Main Menu
               """)
   nmapscan = nmap.PortScanner()
@@ -186,7 +186,7 @@ def nikto_menu():
   print("""
         Nikto
 
-    1. Scan
+    1. Scan a webserver for vulnerabilities
     2. Return to Main Menu
             """)
   nikto_menu_choice = input("Pick an option: ")
@@ -217,8 +217,8 @@ def log_stats_menu():
     print("""
         Log Statistics
 
-    1. Top 10 of all IPs from a log file 
-    2. Top 10 of a field you choose from a log file
+    1. Get the top 10 of all IPs (from a log file)
+    2. Get the top 10 of a field you choose (from a log file)
     3. Main Menu
               """)
     menu_choie = input('Choose an Option: ')
@@ -253,14 +253,14 @@ def log_stats_menu():
 
 def encoding_menu():
     print("""
-        Encoding
+        Encoding and Decoding
 
-    1. Hex2ascii
-    2. ascii2hex
-    3. Base642ascii
-    4. ascii2base64
-    5. Binary2ascii
-    6. ascii2binary 
+    1. Hex to Ascii
+    2. Ascii to Hex
+    3. Base64 to Ascii
+    4. Ascii to Base64
+    5. Binary to Ascii
+    6. Ascii to Binary 
     7. Main Menu
               """)
     menu_choice = input('Choose an Option: ')
