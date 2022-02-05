@@ -22,8 +22,8 @@ sudo pip3 install python-nmap
 Main Menu
 1. What is my Local IP Address?
 2. Nmap (Network Scanning)
-	1 Find hosts on the network (-sn -n)
-	2 Scan for all open ports (standard scan) (-n)
+  1 Find hosts on the network (-sn -n)
+  2 Scan for all open ports (standard scan) (-n)
     * 2.3 Scan the top 20 ports (--top-ports 20)
     * 2.4 Prob open ports for services and version information (-sV -n)
     * 2.5 Attempt to detect the OS (requires root!) (-O)
