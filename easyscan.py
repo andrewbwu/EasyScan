@@ -52,10 +52,10 @@ def nmap_menu():
         Nmap
 
     1. Find hosts on the network. Use a range or CIDR notation
-    2. Scan for all open ports (Standard scan)
+    2. Scan for all open ports (standard scan)
     3. Scan the top 20 ports
     4. Probe open ports for services and version info
-    5. Attempt to detect the OS (Requires root!)
+    5. Attempt to detect the OS (requires root!)
     6. Scan specific ports
     7. Return to Main Menu
               """)
@@ -221,7 +221,7 @@ def log_stats_menu():
     2. Get the top 10 of a field you choose (from a log file)
     3. Main Menu
               """)
-    menu_choie = input('Choose an Option: ')
+    menu_choice = input('Choose an Option: ')
     print()
 
     for x in menu_choice:
