@@ -50,12 +50,8 @@ Main Menu
 Thanks for making it to the end! Check out these tools in the not so Easter Egg Menu!
 
 8.  Easter Egg Menu
-8.1 Make an ascii banner
-8.2 aNgRy InTeRnEt TrAnSlAtOr
-
-
-
-
+    * 8.1 Make an ascii banner
+    * 8.2 aNgRy InTeRnEt TrAnSlAtOr
 
 Created by Berny Nava-Morales and Andrew Wu
 
