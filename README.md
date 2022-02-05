@@ -60,4 +60,4 @@ Created by [Andrew Wu](https://github.com/andrewbwu) and [Berenice Nava-Morales]
 ## Shoutouts
 Special thanks to the staff at Fullstack Academy and our instructors for their knowledge and guidance in our cybersecurity journey!
 
-And shoutout to our cohort peers for thei willingness to lend a hand while learning together.
+And shoutout to our cohort peers for their willingness to lend a hand while learning together.
