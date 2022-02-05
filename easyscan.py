@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import sys
 import hashlib
 import nmap
-#import socket
 import netifaces as ni
 import subprocess
 import pyfiglet
-import string
+import time
+import base64
+#import binascii
 
 def main_menu():
   print("""
@@ -18,6 +18,7 @@ def main_menu():
     4. Log stats
     5. Encoding
     6. Hash checker
+    7. (About)
               """)
   menu_choice = input("Pick a tool: ")
   for tool in menu_choice:
@@ -27,6 +28,7 @@ def main_menu():
       print('------------------------------------------------------------')
       print("Your local IP address is: " + local_ip_address)
       print('------------------------------------------------------------')
+      time.sleep(2)
       main_menu()
     elif tool == "2":
       nmap_menu()
@@ -41,9 +43,7 @@ def main_menu():
     elif tool == "7":
       authors()
     elif tool == "8":
-      ascii2banner()
-    elif tool == "9":
-      angry_translator()
+      ee_menu()
     else:
       print("Try again")
       main_menu()
@@ -74,6 +74,7 @@ def nmap_menu():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print('State : %s' % nmapscan[ip_range].state())
       print('--------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "2":
@@ -90,6 +91,7 @@ def nmap_menu():
                   print ('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('---------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "3":
@@ -106,6 +108,7 @@ def nmap_menu():
                   print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('--------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "4":
@@ -125,6 +128,7 @@ def nmap_menu():
                   print()
           print()
       print('---------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "5":
@@ -151,6 +155,7 @@ def nmap_menu():
 #                      print()
           print()
       print('---------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "6":
@@ -168,6 +173,7 @@ def nmap_menu():
                 print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('---------------------------------------------------------------------------')
+      time.sleep(2)
       nmap_menu()  
 
     elif nmap_option == "7":
@@ -195,6 +201,7 @@ def nikto_menu():
         print('---------------------------------------------------------------------------')
         print(niktoresults)
         print('---------------------------------------------------------------------------')
+        time.sleep(2)
         nikto_menu()
 
     elif nikto_option == "2":
@@ -210,17 +217,45 @@ def nikto(host, niktoargs):
 def log_stats_menu():
     print("""
         Log Statistics
-    1. Top 10 IPs
-    2. Top 10 Source IPs
-    3. Top 10 Destination IPs
-    4. Top 10 Ports
 
-    5. Main Menu
+    1. Top 10 of all IPs from a log file 
+    2. Top 10 of a field you choose from a log file
+    3. Main Menu
               """)
+    menu_choie = input('Choose an Option: ')
+    print()
+
+    for x in menu_choice:
+        if x == '1':
+
+            print()
+            print('---------------------------------------------------------------------------')
+
+            print('---------------------------------------------------------------------------')
+            time.sleep(2)
+            log_stats_menu()
+
+        elif x == '2':
+            
+            print()
+            print('---------------------------------------------------------------------------')
+
+            print('---------------------------------------------------------------------------')
+            time.sleep(2)
+            log_stats_menu()
+
+        elif x == '3':
+            main_menu()
+
+        else:
+            print('Try again')
+            log_stats_menu()
+
 
 def encoding_menu():
     print("""
         Encoding
+
     1. Hex2ascii
     2. ascii2hex
     3. Base642ascii
@@ -229,21 +264,29 @@ def encoding_menu():
     6. ascii2binary 
     7. Main Menu
               """)
-    menu_choice = input('Choose An Option: ')
+    menu_choice = input('Choose an Option: ')
     print()
-
+    
     for x in menu_choice:
      if x == '1':
         hexstring = input("Enter your code: ")
         a_string = bytes.fromhex(hexstring)
         a_string = a_string.decode("ascii")
+        print()
+        print('---------------------------------------------------------------------------')
         print(a_string)
+        print('---------------------------------------------------------------------------')
+        time.sleep(2)
         encoding_menu()
 
      elif x == '2':
        x = input("Enter your code: ")
        output = x.encode('utf-8').hex()
+       print()
+       print('---------------------------------------------------------------------------')
        print(output)
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        encoding_menu()
 
      elif x == '3': #base642ascii
@@ -251,7 +294,11 @@ def encoding_menu():
        base64_bytes = base64_message.encode('ascii')
        message_bytes = base64.b64decode(base64_bytes)
        message = message_bytes.decode('ascii')
+       print()
+       print('---------------------------------------------------------------------------')
        print(message)
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        encoding_menu()
 
      elif x == '4':
@@ -259,20 +306,35 @@ def encoding_menu():
        message_bytes = message.encode('ascii')
        base64_bytes = base64.b64encode(message_bytes)
        base64_message = base64_bytes.decode('ascii')
+       print()
+       print('---------------------------------------------------------------------------')
        print(base64_message)
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        encoding_menu()
 
      elif x == '5': #binary2ascii
-       binmess = input('Enter your code: ')
-       binary = binascii.a2b_uu(binmess)
-       print(binary)
+       text = input('Enter your code: ')
+       binary_int = int(text, 2)
+       byte_number = binary_int.bit_length() + 7 // 8
+       binary_array = binary_int.to_bytes(byte_number, "big")
+       ascii_text = binary_array.decode()
+       print()
+       print('---------------------------------------------------------------------------')
+       print(ascii_text)
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        encoding_menu()
 
      elif x == '6': #ascii2binary
        byte_array = input('Enter your code: ').encode()
        binary_int = int.from_bytes(byte_array, 'big')
        binary_string = bin(binary_int)
+       print()
+       print('---------------------------------------------------------------------------')
        print(binary_string)
+       print('---------------------------------------------------------------------------')
+       time.sleep(2)
        encoding_menu()
 
      elif x == '7': #return2main
@@ -287,12 +349,15 @@ def encoding_menu():
 def hash_checker_menu():
     print("""
         Hash Checker
-    1. MD5
-    2. SHA-256
-    3. Main Menu
+
+    1. MD5 of a string
+    2. MD5 of a file
+    3. SHA-256 of a string
+    4. SHA-256 of a file
+    5. Main Menu
               """)
 
-    menu_option = input('Choose An Option: ')
+    menu_option = input('Choose an Option: ')
     print()
 
     for x in menu_option:
@@ -302,10 +367,36 @@ def hash_checker_menu():
        hash_checker_menu()
 
       elif x == '2':
+       filename = input("Enter file name: ")
+       with open(filename, "rb") as f:
+           print()
+           print('---------------------------------------------------------------------------')
+           print(hashlib.md5(f.read()).hexdigest())
+           print('---------------------------------------------------------------------------')
+           time.sleep(2)
+           hash_checker_menu()
+
+      elif x == '3':
        sha_txt = input('Enter text to generate hash: ')
        result = hashlib.sha256(sha_txt.encode())
        print(result.hexdigest())
        hash_checker_menu()
+
+      elif x == '4':
+       filename = input("Enter file name: ")
+       sha256_hash = hashlib.sha256()
+       with open(filename, "rb") as f:
+           for byte_block in iter(lambda: f.read(4096),b""):
+               sha256_hash.update(byte_block)
+           print()
+           print('---------------------------------------------------------------------------')
+           print(sha256_hash.hexdigest())
+           print('---------------------------------------------------------------------------')
+           time.sleep(2)
+           hash_checker_menu()
+
+      elif x == '5':
+       main_menu()
 
       else:
        print('Try Again')
@@ -317,25 +408,47 @@ def authors():
     print("""
         Brought to you by
 
-             ____   __  __      ___        _  __        __
-            | __ ) |  \/  |    ( _ )      / \ \ \      / /
-            |  _ \ | |\/| |    / _ \/\   / _ \ \ \ /\ / / 
-            | |_) || |  | |_  | (_>  <  / ___ \ \ V  V /_ 
-            |____(_)_|  |_(_)  \___/\/ /_/   \_(_)_/\_/(_)
-
+             ____   _   _      ___        _  __        __
+            | __ ) | \ | |    ( _ )      / \ \ \      / /
+            |  _ \ |  \| |    / _ \/\   / _ \ \ \ /\ / / 
+            | |_) || |\  |_  | (_>  <  / ___ \ \ V  V /_ 
+            |____(_)_| \_(_)  \___/\/ /_/   \_(_)_/\_/(_)
                 """)
+    time.sleep(3)
     main_menu()
 
-def ascii2banner():
+def ee_menu():
+    print("""
+        Easter Eggs
+
+    1. Make an ascii banner
+    2. Convert your text into aNgRy InTeRnEt TeXt
+    3. Main Menu
+              """)
+    menu_option = input('Choose an Option: ')
     print()
+    for x in menu_option:
+        if x == '1':
+            ascii2banner()
+            ee_menu()
+        elif x == '2':
+            angry_translator()
+            ee_menu()
+        elif x == '3':
+            main_menu()
+        else:
+            print("Try again")
+            ee_menu()
+
+def ascii2banner():
     text_to_ascii = input("Enter text to turn into ascii banner: ")
     ascii_banner = pyfiglet.figlet_format(text_to_ascii)
     print()
     print(ascii_banner)
-    main_menu()
+    time.sleep(2)
+    ee_menu()
 
 def angry_translator():
-    print()
     text = input("Enter text to translate into aNgRy InTeRnEt TeXt!: ")
 #    text_lowercase = text.ascii_lowercase
     angry_text = ""
@@ -348,10 +461,9 @@ def angry_translator():
         if char !=' ':
             i = not i
     print()
-    print('---------------------------------------------------------------------------')
     print(angry_text)
-    print('---------------------------------------------------------------------------')
-    main_menu()
+    time.sleep(2)
+    ee_menu()
 
 def main():
     print("""
