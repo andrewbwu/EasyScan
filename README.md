@@ -53,6 +53,6 @@ Thanks for making it to the end! Check out these tools in the not so Easter Egg 
     * 8.1 Make an ascii banner
     * 8.2 aNgRy InTeRnEt TrAnSlAtOr
 
-Created by [Berny Nava-Morales](https://github.com/ynreb) and [Andrew Wu](https://github.com/andrewbwu)
+Created by [Andrew Wu](https://github.com/andrewbwu) and [Berenice Nava-Morales](https://github.com/ynreb) 
 
 Shoutout to the staff at FullStack Academy and our instructors for
