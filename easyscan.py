@@ -28,7 +28,6 @@ def main_menu():
       print('------------------------------------------------------------')
       print("Your local IP address is: " + local_ip_address)
       print('------------------------------------------------------------')
-      time.sleep(2)
       main_menu()
     elif tool == "2":
       nmap_menu()
@@ -74,7 +73,6 @@ def nmap_menu():
           print('Host : %s (%s)' % (ip_range, nmapscan[ip_range].hostname()))
           print('State : %s' % nmapscan[ip_range].state())
       print('--------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "2":
@@ -91,7 +89,6 @@ def nmap_menu():
                   print ('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('---------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "3":
@@ -108,7 +105,6 @@ def nmap_menu():
                   print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('--------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "4":
@@ -128,7 +124,6 @@ def nmap_menu():
                   print()
           print()
       print('---------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "5":
@@ -155,7 +150,6 @@ def nmap_menu():
 #                      print()
           print()
       print('---------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()
 
     elif nmap_option == "6":
@@ -173,7 +167,6 @@ def nmap_menu():
                 print('port: %s\tstate : %s' % (port, nmapscan[ip_range][proto][port]['state']))
           print()
       print('---------------------------------------------------------------------------')
-      time.sleep(2)
       nmap_menu()  
 
     elif nmap_option == "7":
@@ -201,7 +194,6 @@ def nikto_menu():
         print('---------------------------------------------------------------------------')
         print(niktoresults)
         print('---------------------------------------------------------------------------')
-        time.sleep(2)
         nikto_menu()
 
     elif nikto_option == "2":
@@ -256,7 +248,6 @@ def log_stats_menu():
                for key in sorted(counter, key=counter.get, reverse=True)[:10]:
                    print(key, '-', counter[key])
                print('---------------------------------------------------------------------------')
-               time.sleep(2)
                log_stats_menu()
 
         elif x == '1':
@@ -279,7 +270,6 @@ def log_stats_menu():
              print(key, '-', counter[key])
 
             print('---------------------------------------------------------------------------')
-            time.sleep(2)
             log_stats_menu()
 
         elif x == '3':
@@ -314,7 +304,6 @@ def encoding_menu():
         print('---------------------------------------------------------------------------')
         print(a_string)
         print('---------------------------------------------------------------------------')
-        time.sleep(2)
         encoding_menu()
 
      elif x == '2':
@@ -324,7 +313,6 @@ def encoding_menu():
        print('---------------------------------------------------------------------------')
        print(output)
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        encoding_menu()
 
      elif x == '3': #base642ascii
@@ -336,7 +324,6 @@ def encoding_menu():
        print('---------------------------------------------------------------------------')
        print(message)
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        encoding_menu()
 
      elif x == '4':
@@ -348,7 +335,6 @@ def encoding_menu():
        print('---------------------------------------------------------------------------')
        print(base64_message)
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        encoding_menu()
 
      elif x == '5': #binary2ascii
@@ -361,7 +347,6 @@ def encoding_menu():
        print('---------------------------------------------------------------------------')
        print(ascii_text)
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        encoding_menu()
 
      elif x == '6': #ascii2binary
@@ -372,7 +357,6 @@ def encoding_menu():
        print('---------------------------------------------------------------------------')
        print(binary_string)
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        encoding_menu()
 
      elif x == '7': #return2main
@@ -404,7 +388,6 @@ def hash_checker_menu():
        print('---------------------------------------------------------------------------')
        print(hashlib.md5(md_c.encode('utf-8')).hexdigest())
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        hash_checker_menu()
 
       elif x == '2':
@@ -414,7 +397,6 @@ def hash_checker_menu():
            print('---------------------------------------------------------------------------')
            print(hashlib.md5(f.read()).hexdigest())
            print('---------------------------------------------------------------------------')
-           time.sleep(2)
            hash_checker_menu()
 
       elif x == '3':
@@ -423,7 +405,6 @@ def hash_checker_menu():
        print('---------------------------------------------------------------------------')
        print(result.hexdigest())
        print('---------------------------------------------------------------------------')
-       time.sleep(2)
        hash_checker_menu()
 
       elif x == '4':
@@ -436,7 +417,6 @@ def hash_checker_menu():
            print('---------------------------------------------------------------------------')
            print(sha256_hash.hexdigest())
            print('---------------------------------------------------------------------------')
-           time.sleep(2)
            hash_checker_menu()
 
       elif x == '5':
@@ -489,7 +469,6 @@ def ascii2banner():
     ascii_banner = pyfiglet.figlet_format(text_to_ascii)
     print()
     print(ascii_banner)
-    time.sleep(2)
     ee_menu()
 
 def angry_translator():
@@ -506,7 +485,6 @@ def angry_translator():
             i = not i
     print()
     print(angry_text)
-    time.sleep(2)
     ee_menu()
 
 def main():
